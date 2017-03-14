@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="hibernate.cfg.xml/Hibernate">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="itcastelec0710">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="itcastelect0327"/>
+    <schema id="5" parent="1" name="mysql"/>
+    <schema id="6" parent="1" name="performance_schema"/>
+    <schema id="7" parent="1" name="sys"/>
+    <table id="8" parent="2" name="elec_commonmsg"/>
+    <table id="9" parent="2" name="elec_exportfields"/>
+    <table id="10" parent="2" name="elec_popedom"/>
+    <table id="11" parent="2" name="elec_role"/>
+    <table id="12" parent="2" name="elec_role_popedom"/>
+    <table id="13" parent="2" name="elec_systemddl"/>
+    <table id="14" parent="2" name="elec_text"/>
+    <table id="15" parent="2" name="elec_user"/>
+    <table id="16" parent="2" name="elec_user_role"/>
+    <column id="17" parent="8" name="comID">
+      <Position>1</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="18" parent="8" name="stationRun">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="19" parent="8" name="devRun">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="20" parent="8" name="createDate">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <key id="21" parent="8" name="PRIMARY">
+      <ColNames>comID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="22" parent="9" name="belongTo">
+      <Position>1</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="23" parent="9" name="expNameList">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="24" parent="9" name="expFieldName">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="25" parent="9" name="noExpNameList">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="26" parent="9" name="noExpFieldName">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="27" parent="9" name="PRIMARY">
+      <ColNames>belongTo</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="28" parent="10" name="MID">
+      <Position>1</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="10" name="pid">
+      <Position>2</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="10" name="NAME">
+      <Position>3</Position>
+      <DataType>varchar(500)|0</DataType>
+    </column>
+    <column id="31" parent="10" name="url">
+      <Position>4</Position>
+      <DataType>varchar(5000)|0</DataType>
+    </column>
+    <column id="32" parent="10" name="icon">
+      <Position>5</Position>
+      <DataType>varchar(5000)|0</DataType>
+    </column>
+    <column id="33" parent="10" name="target">
+      <Position>6</Position>
+      <DataType>varchar(500)|0</DataType>
+    </column>
+    <column id="34" parent="10" name="isParent">
+      <Position>7</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="35" parent="10" name="isMenu">
+      <Position>8</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <key id="36" parent="10" name="PRIMARY">
+      <ColNames>MID
+pid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="37" parent="11" name="roleID">
+      <Position>1</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="38" parent="11" name="roleName">
+      <Position>2</Position>
+      <DataType>varchar(500)|0</DataType>
+    </column>
+    <key id="39" parent="11" name="PRIMARY">
+      <ColNames>roleID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="40" parent="12" name="roleID">
+      <Position>1</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="41" parent="12" name="mid">
+      <Position>2</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="12" name="pid">
+      <Position>3</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="43" parent="12" name="PRIMARY">
+      <ColNames>roleID
+mid
+pid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="44" parent="13" name="seqID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="45" parent="13" name="keyword">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="46" parent="13" name="ddlCode">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="47" parent="13" name="ddlName">
+      <Position>4</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <key id="48" parent="13" name="PRIMARY">
+      <ColNames>seqID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="49" parent="14" name="textID">
+      <Position>1</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="50" parent="14" name="textName">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="51" parent="14" name="textDate">
+      <Position>3</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="52" parent="14" name="textRemark">
+      <Position>4</Position>
+      <DataType>varchar(500)|0</DataType>
+    </column>
+    <key id="53" parent="14" name="PRIMARY">
+      <ColNames>textID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="54" parent="15" name="userID">
+      <Position>1</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="55" parent="15" name="jctID">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="56" parent="15" name="userName">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="57" parent="15" name="logonName">
+      <Position>4</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="58" parent="15" name="logonPwd">
+      <Position>5</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="59" parent="15" name="sexID">
+      <Position>6</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="60" parent="15" name="birthday">
+      <Position>7</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="61" parent="15" name="address">
+      <Position>8</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="62" parent="15" name="contactTel">
+      <Position>9</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="63" parent="15" name="email">
+      <Position>10</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="64" parent="15" name="mobile">
+      <Position>11</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="65" parent="15" name="isDuty">
+      <Position>12</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="66" parent="15" name="postID">
+      <Position>13</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="67" parent="15" name="onDutyDate">
+      <Position>14</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="68" parent="15" name="offDutyDate">
+      <Position>15</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="69" parent="15" name="remark">
+      <Position>16</Position>
+      <DataType>varchar(500)|0</DataType>
+    </column>
+    <column id="70" parent="15" name="jctUnitID">
+      <Position>17</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="71" parent="15" name="PRIMARY">
+      <ColNames>userID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="72" parent="16" name="userID">
+      <Position>1</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="73" parent="16" name="roleID">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="74" parent="16" name="FK14CB983096DBAE0">
+      <ColNames>roleID</ColNames>
+    </index>
+    <index id="75" parent="16" name="FK14CB9830EC3104A">
+      <ColNames>userID</ColNames>
+    </index>
+    <key id="76" parent="16" name="PRIMARY">
+      <ColNames>roleID
+userID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="77" parent="16" name="FK14CB9830EC3104A">
+      <ColNames>userID</ColNames>
+      <RefSchemaName>itcastelec0710</RefSchemaName>
+      <RefTableName>elec_user</RefTableName>
+      <RefColNames>userID</RefColNames>
+    </foreign-key>
+    <foreign-key id="78" parent="16" name="FK14CB983096DBAE0">
+      <ColNames>roleID</ColNames>
+      <RefSchemaName>itcastelec0710</RefSchemaName>
+      <RefTableName>elec_role</RefTableName>
+      <RefColNames>roleID</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>

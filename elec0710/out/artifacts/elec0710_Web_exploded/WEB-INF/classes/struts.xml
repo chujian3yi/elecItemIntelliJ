@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<!-- 配置Struts的模式为开发模式，优势是自动加载配置文件struts。xml和资源文件，显示更多错误信息 -->
+	<constant name="struts.devMode" value="true"></constant>
+	<!-- 设置UI主题，去掉Struts提供的样式，设置为simple，由美工添加样式 -->
+	<constant name="struts.ui.theme" value="simple"></constant>
+	<!-- 改变struts方法的后缀，友action该为do -->
+	<constant name="struts.action.extension" value="do"></constant>
+	<!-- <constant name="struts.objectFactory" value="spring" /> -->
+
+	<!-- 系统管理 -->
+	<package name="system" namespace="/system" extends="json-default">
+		<!-- 全局转发 -->
+		<global-results>
+			<result name="close">/close.jsp</result>
+		</global-results>
+		<!-- 测试 -->
+		<action name="elecTextAction_*" class="elecTextAction" method="{1}">
+			<result name="save">/system/textAdd.jsp</result>
+		</action>
+		<!--系统登录  -->
+		<action name="elecMenuAction_*" class="elecMenuAction" method="{1}">
+			<result name="menuHome">/WEB-INF/page/menu/home.jsp</result>
+			<result name="title">/WEB-INF/page/menu/title.jsp</result>
+			<result name="left">/WEB-INF/page/menu/left.jsp</result>
+			<result name="change">/WEB-INF/page/menu/change.jsp</result>
+			<result name="loading">/WEB-INF/page/menu/loading.jsp</result>
+			<result name="error">/index.jsp</result>
+			<result name="showMenu" type="json">
+
+			</result>
+			
+			<!-- 重定向，这样不会显示*.do，而是*.jsp -->
+			<result name="logout" type="redirect">/index.jsp</result>
+			<result name="alermStation">/WEB-INF/page/menu/alermStation.jsp</result>
+			<result name="alermDevice">/WEB-INF/page/menu/alermDevice.jsp</result>
+		</action>
+		<!--运行监控  -->
+		<action name="elecCommonMsgAction_*" class="elecCommonMsgAction" method="{1}">
+			<result name="home">/WEB-INF/page/system/actingIndex.jsp</result>
+			
+			<!-- 重定向，这样回到原页面 -->
+			<result name="save" type="redirectAction">
+				<param name="actionName">elecCommonMsgAction_home.do</param>
+			</result>
+		</action>
+		<!-- 导出设置 -->
+		<action name="elecExportFieldsAction_*" class="elecExportFieldsAction" method="{1}">
+			<result name="setExportExcel">/WEB-INF/page/system/exportExcel.jsp</result>
+		</action>
+		<!--数据字典 -->
+		<action name="elecSystemDDLAction_*" class="elecSystemDDLAction" method="{1}">
+			<result name="home">/WEB-INF/page/system/dictionaryIndex.jsp</result>
+			<result name="edit">/WEB-INF/page/system/dictionaryEdit.jsp</result>
+			<result name="save" type="redirectAction">
+				<param name="actionName">elecSystemDDLAction_home.do</param>
+			</result>
+		</action>
+		<!--用户管理  -->
+		<action name="elecUserAction_*" class="elecUserAction" method="{1}">
+			<result name="home">/WEB-INF/page/system/userIndex.jsp</result>
+			<result name="add">/WEB-INF/page/system/userAdd.jsp</result>
+			<result name="findJctUnit" type="json">
+				
+			</result>
+			<result name="checkUser" type="json">
+				<!--模型驱动中存在一个叫message的属性，将查询结果放置到字符串类型的message中，就可以传递给页面  -->
+				<param name="root">message</param>
+			</result>
+			<result name="edit">/WEB-INF/page/system/userEdit.jsp</result>
+			<result name="delete" type="redirectAction">
+				<param name="actionName">elecUserAction_home.do</param>
+			</result>
+		</action>
+		
+		<!--角色管理  -->
+		<action name="elecRoleAction_*" class="elecRoleAction" method="{1}" >
+			<result name="home">/WEB-INF/page/system/roleIndex.jsp</result>
+			<result name="edit">/WEB-INF/page/system/roleEdit.jsp</result>
+			<result name="save" type="redirectAction">
+				<param name="actionName">elecRoleAction_home.do</param>
+			</result>
+			
+		</action>
+		
+	</package>
+</struts>

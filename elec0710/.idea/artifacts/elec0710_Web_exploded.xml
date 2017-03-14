@@ -1,0 +1,78 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="elec0710:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/elec0710_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="elec0710/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="elec0710" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="antlr-2.7.6.jar" module-name="elec0710" />
+          <element id="library" level="module" name="asm-3.3.jar" module-name="elec0710" />
+          <element id="library" level="module" name="asm-commons-3.3.jar" module-name="elec0710" />
+          <element id="library" level="module" name="asm-tree-3.3.jar" module-name="elec0710" />
+          <element id="library" level="module" name="backport-util-concurrent.jar" module-name="elec0710" />
+          <element id="library" level="module" name="cglib-2.2.jar" module-name="elec0710" />
+          <element id="library" level="module" name="com.springsource.com.mchange.v2.c3p0-0.9.1.2.jar" module-name="elec0710" />
+          <element id="library" level="module" name="com.springsource.javax.annotation-1.0.0.jar" module-name="elec0710" />
+          <element id="library" level="module" name="com.springsource.net.sf.cglib-2.2.0.jar" module-name="elec0710" />
+          <element id="library" level="module" name="com.springsource.org.aopalliance-1.0.0.jar" module-name="elec0710" />
+          <element id="library" level="module" name="com.springsource.org.apache.commons.beanutils-1.8.0.jar" module-name="elec0710" />
+          <element id="library" level="module" name="com.springsource.org.apache.commons.dbcp-1.2.2.osgi.jar" module-name="elec0710" />
+          <element id="library" level="module" name="com.springsource.org.apache.commons.logging-1.1.1.jar" module-name="elec0710" />
+          <element id="library" level="module" name="com.springsource.org.apache.commons.pool-1.5.3.jar" module-name="elec0710" />
+          <element id="library" level="module" name="com.springsource.org.apache.log4j-1.2.15.jar" module-name="elec0710" />
+          <element id="library" level="module" name="com.springsource.org.aspectj.tools-1.6.6.RELEASE.jar" module-name="elec0710" />
+          <element id="library" level="module" name="com.springsource.org.junit-4.7.0.jar" module-name="elec0710" />
+          <element id="library" level="module" name="commons-collections-3.1.jar" module-name="elec0710" />
+          <element id="library" level="module" name="commons-fileupload-1.2.2.jar" module-name="elec0710" />
+          <element id="library" level="module" name="commons-io-2.0.1.jar" module-name="elec0710" />
+          <element id="library" level="module" name="commons-lang-2.4.jar" module-name="elec0710" />
+          <element id="library" level="module" name="commons-lang3-3.1.jar" module-name="elec0710" />
+          <element id="library" level="module" name="commons-logging-1.1.1.jar" module-name="elec0710" />
+          <element id="library" level="module" name="dom4j-1.6.1.jar" module-name="elec0710" />
+          <element id="library" level="module" name="ehcache-1.5.0.jar" module-name="elec0710" />
+          <element id="library" level="module" name="freemarker-2.3.19.jar" module-name="elec0710" />
+          <element id="library" level="module" name="hibernate-annotations.jar" module-name="elec0710" />
+          <element id="library" level="module" name="hibernate-commons-annotations.jar" module-name="elec0710" />
+          <element id="library" level="module" name="hibernate3.jar" module-name="elec0710" />
+          <element id="library" level="module" name="javassist-3.9.0.GA.jar" module-name="elec0710" />
+          <element id="library" level="module" name="jcommon-1.0.16.jar" module-name="elec0710" />
+          <element id="library" level="module" name="jstl.jar" module-name="elec0710" />
+          <element id="library" level="module" name="jta-1.1.jar" module-name="elec0710" />
+          <element id="library" level="module" name="mysql-connector-java-5.1.10-bin.jar" module-name="elec0710" />
+          <element id="library" level="module" name="ognl-3.0.5.jar" module-name="elec0710" />
+          <element id="library" level="module" name="org.springframework.aop-3.0.2.RELEASE.jar" module-name="elec0710" />
+          <element id="library" level="module" name="org.springframework.asm-3.0.2.RELEASE.jar" module-name="elec0710" />
+          <element id="library" level="module" name="org.springframework.aspects-3.0.2.RELEASE.jar" module-name="elec0710" />
+          <element id="library" level="module" name="org.springframework.beans-3.0.2.RELEASE.jar" module-name="elec0710" />
+          <element id="library" level="module" name="org.springframework.context-3.0.2.RELEASE.jar" module-name="elec0710" />
+          <element id="library" level="module" name="org.springframework.core-3.0.2.RELEASE.jar" module-name="elec0710" />
+          <element id="library" level="module" name="org.springframework.expression-3.0.2.RELEASE.jar" module-name="elec0710" />
+          <element id="library" level="module" name="org.springframework.jdbc-3.0.2.RELEASE.jar" module-name="elec0710" />
+          <element id="library" level="module" name="org.springframework.orm-3.0.2.RELEASE.jar" module-name="elec0710" />
+          <element id="library" level="module" name="org.springframework.transaction-3.0.2.RELEASE.jar" module-name="elec0710" />
+          <element id="library" level="module" name="org.springframework.web-3.0.2.RELEASE.jar" module-name="elec0710" />
+          <element id="library" level="module" name="slf4j-api-1.5.8.jar" module-name="elec0710" />
+          <element id="library" level="module" name="slf4j-log4j12.jar" module-name="elec0710" />
+          <element id="library" level="module" name="standard.jar" module-name="elec0710" />
+          <element id="library" level="module" name="struts2-core-2.3.3.jar" module-name="elec0710" />
+          <element id="library" level="module" name="struts2-spring-plugin-2.3.3.jar" module-name="elec0710" />
+          <element id="library" level="module" name="xwork-core-2.3.3.jar" module-name="elec0710" />
+          <element id="library" level="module" name="CKFinder-2.3.1.jar" module-name="elec0710" />
+          <element id="library" level="module" name="CKFinderPlugin-FileEditor-2.3.1.jar" module-name="elec0710" />
+          <element id="library" level="module" name="CKFinderPlugin-ImageResize-2.3.1.jar" module-name="elec0710" />
+          <element id="library" level="module" name="activation-1.1.jar" module-name="elec0710" />
+          <element id="library" level="module" name="mail-1.4.1.jar" module-name="elec0710" />
+          <element id="library" level="module" name="thumbnailator-0.4.2.jar" module-name="elec0710" />
+          <element id="library" level="module" name="ckeditor-java-core-3.5.3.jar" module-name="elec0710" />
+          <element id="library" level="module" name="struts2-json-plugin-2.3.3.jar" module-name="elec0710" />
+          <element id="library" level="module" name="org.apache.commons.pool.jar.zip" module-name="elec0710" />
+          <element id="library" level="application_server_libraries" name="Tomcat 8.0.36" />
+          <element id="library" level="project" name="lib" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

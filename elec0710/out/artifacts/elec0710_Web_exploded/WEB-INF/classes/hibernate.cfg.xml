@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!--数据库连接信息-->
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/itcastelec0710?useUnicode=true&amp;characterEncoding=utf8</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">ghq123</property> 
+		<!-- hibernate自动提交事务 -->
+		 <property name="hibernate.connection.autocommit">true</property>
+
+		<!--其他配置 -->
+		<property name="hibernate.dialect"> org.hibernate.dialect.MySQL5Dialect</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		
+		<!-- 开启二级缓存 -->
+		<property name="hibernate.cache.use_second_level_cache">true</property>
+		<!--提供EhCache的供应商  -->
+		<property name="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
+		<!-- 开启查询缓存（因为电力系统中使用了查询缓存（hql语句）） -->
+		<property name="hibernate.cache.use_query_cache">true</property>
+		<!--加载映射文件 -->
+		<mapping resource="itest/elec/domain/ElecText.hbm.xml" />
+		<mapping resource="itest/elec/domain/ElecCommonMsg.hbm.xml" />
+		<mapping resource="itest/elec/domain/ElecExportFields.hbm.xml" />
+		<mapping resource="itest/elec/domain/ElecSystemDDL.hbm.xml"/>
+		<mapping resource="itest/elec/domain/ElecUser.hbm.xml"/>
+		<mapping resource="itest/elec/domain/ElecRole.hbm.xml"/>
+		<mapping resource="itest/elec/domain/ElecRolePopedom.hbm.xml"/>
+		<mapping resource="itest/elec/domain/ElecPopedom.hbm.xml"/>
+		
+		
+		 <!-- 指定使用二级缓存的类 放在maping下面 -->
+     	 <!-- 配置类级别的二级缓存 -->
+     		 <class-cache class="itest.elec.domain.ElecSystemDDL" usage="read-write"/>
+    
+    </session-factory>
+</hibernate-configuration>
