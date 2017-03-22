@@ -12,7 +12,7 @@ var menu = {
     loadMenuTree:function(){
         $.post("elecMenuAction_showMenu.do",null,function(data){
             //data返回json数据，封装List<ElecPopedom>
-            $("#menuTree").zTree(menu.setting, data);
+            $("#menuTree").zTree(menu.setting, data.modelList);
         })
 
     }

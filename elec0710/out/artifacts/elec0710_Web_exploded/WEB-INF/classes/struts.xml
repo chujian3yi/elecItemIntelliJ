@@ -31,7 +31,7 @@
 			<result name="loading">/WEB-INF/page/menu/loading.jsp</result>
 			<result name="error">/index.jsp</result>
 			<result name="showMenu" type="json">
-
+				<param name="root">action</param>
 			</result>
 			
 			<!-- 重定向，这样不会显示*.do，而是*.jsp -->

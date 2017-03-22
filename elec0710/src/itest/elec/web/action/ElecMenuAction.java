@@ -39,6 +39,17 @@ public class ElecMenuAction extends BaseAction<MenuForm> {
 	@Resource(name=IElecRoleService.SERVICE_NAME)
 	private IElecRoleService elecRoleService;
 
+
+	//左侧树形菜单ZTree显示的数据集合
+	private List<ElecPopedom> modelList;
+	public List<ElecPopedom> getModelList() {
+		return modelList;
+	}
+	public void setModelList(List<ElecPopedom> modelList) {
+		this.modelList = modelList;
+	}
+
+
 	private MenuForm menuForm = this.getModel();
 	
 	/**  
@@ -113,7 +124,7 @@ public class ElecMenuAction extends BaseAction<MenuForm> {
 		  LogonUtils.remeberMe(request,response,name,password);
 		  
 		  request.getSession().setAttribute("globle_user", elecUser);
-		  request.getSession().setAttribute("gole_elecRole", ht);
+		  request.getSession().setAttribute("globle_elecRole", ht);
 		  request.getSession().setAttribute("globle_popedom", popedom);
 		  return "menuHome";
 	  }
@@ -191,9 +202,28 @@ public class ElecMenuAction extends BaseAction<MenuForm> {
 	 * @Return: 返回json数据
 	 */
 	  public String showMenu(){
-		String popedom = (String) request.getSession().getAttribute("globle_popedom");
-		  List<ElecPopedom> list = elecRoleService.findShowMenu(popedom);
-		  ValueStackUtils.setValueStack(list);
+	      //从session中获取当前登录名具有的权限
+          String popedom = (String) request.getSession().getAttribute("globle_popedom");
+          //从session中获取当前登录名具有的角色
+          Hashtable<String,String> ht = (Hashtable<String,String>)request.getSession().getAttribute("globle_elecRole");
+          //从session中获取当前登录名具有的用户
+          ElecUser elecUser = (ElecUser) request.getSession().getAttribute("globle_user");
+          modelList = elecRoleService.findShowMenu(popedom);
+          /*角色权限控制：
+          * 如果是非系统管理员，只能打开用户自己的编辑页面，
+          * 保存按钮重定向到编辑页面，并取消修改按钮。
+          * **/
+          if(!ht.containsKey("1")){
+              if (modelList!=null && modelList.size()>0){
+                  for (ElecPopedom elecPopedom:modelList){
+                      //用户管理
+                      if(elecPopedom.getMid().equals("an")){
+                            elecPopedom.setUrl("../system/elecUserAction_edit.do?userID="+elecUser.getUserID());
+                      }
+                  }
+              }
+          }
+		  //ValueStackUtils.setValueStack(list);
 	  	return "showMenu";
 	  }
 }
