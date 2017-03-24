@@ -1,5 +1,6 @@
 <%@ page language="java"  pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
+<%@taglib uri="/WEB-INF/RoleTagLib.tld" prefix="u" %>
 
 <HTML>
 	<HEAD>
@@ -242,9 +243,10 @@ function delTableRow(rowNum){
  <TR height=10><td colspan=3></td></TR>
   <tr>
      <td align="center" colspan=3>
-       <input type="button" name="saveitem" value="保存" style="font-size:12px; color:black; height=20;width=50" onClick="returnMethod()">
-       
-       
+		<u:if pattern="ec">
+			<input type="button" name="saveitem" value="保存" style="font-size:12px; color:black; height=20;width=50" onClick="returnMethod()">
+		</u:if>
+
 	 </td>
  </tr>
  

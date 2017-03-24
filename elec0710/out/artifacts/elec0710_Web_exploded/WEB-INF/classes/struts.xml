@@ -14,10 +14,31 @@
 
 	<!-- 系统管理 -->
 	<package name="system" namespace="/system" extends="json-default">
+		<!--自定义拦截器处理异常+细颗粒度权限控制-->
+		<interceptors>
+			<!-- 声明拦截器 -->
+			<interceptor name="errorAndLimitInterceptor" class="itest.elec.util.ErrorAndLimitInterceptor" />
+			<!-- 配置拦截器栈 -->
+			<interceptor-stack name="myErrorAndLimitInterceptor">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="errorAndLimitInterceptor">
+					<!-- 配置哪些方法不被拦截器 -->
+					<param name="excludeMethods">menuHome,title,left,change,loading,logout,alermStation,alermDevice,showMenu</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<!-- 覆盖底层的拦截器栈 对包中的所有action都有效 -->
+		<default-interceptor-ref name="myErrorAndLimitInterceptor"/>
 		<!-- 全局转发 -->
 		<global-results>
+			<result name="errorMsg">/errorMsg.jsp</result>
 			<result name="close">/close.jsp</result>
 		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="errorMsg" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+
+
 		<!-- 测试 -->
 		<action name="elecTextAction_*" class="elecTextAction" method="{1}">
 			<result name="save">/system/textAdd.jsp</result>

@@ -224,6 +224,20 @@ public class ElecUser implements java.io.Serializable {
 	public void setFlag(String flag) {
 		this.flag = flag;
 	}
+
+	/*判断是否系统管理员，打开用户管理页面时，
+	* roleflag为null：显示用户管理
+	* roleflag为1：跳转到编辑页面，关闭按钮要隐藏
+	* **/
+	private String roleflag;
+
+	public String getRoleflag() {
+		return roleflag;
+	}
+
+	public void setRoleflag(String roleflag) {
+		this.roleflag = roleflag;
+	}
 }
 
 

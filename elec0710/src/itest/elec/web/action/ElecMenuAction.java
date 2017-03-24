@@ -218,7 +218,7 @@ public class ElecMenuAction extends BaseAction<MenuForm> {
                   for (ElecPopedom elecPopedom:modelList){
                       //用户管理
                       if(elecPopedom.getMid().equals("an")){
-                            elecPopedom.setUrl("../system/elecUserAction_edit.do?userID="+elecUser.getUserID());
+                            elecPopedom.setUrl("../system/elecUserAction_edit.do?userID="+elecUser.getUserID()+"&roleflag=1");
                       }
                   }
               }

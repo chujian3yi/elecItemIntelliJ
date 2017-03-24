@@ -9,6 +9,7 @@ import itest.elec.domain.ElecRole;
 import itest.elec.domain.ElecRolePopedom;
 import itest.elec.domain.ElecUser;
 import itest.elec.service.IElecRoleService;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -247,4 +248,34 @@ public class ElecRoleServiceImpl implements IElecRoleService {
         List<ElecPopedom> list = elecPopedomDao.findCollectionByConditionNoPage(condition,params,orderby );
 		return list;
 	}
+	/**使用角色ID，子权限编号，父权限编号，查询角色权限表的所有数据*/
+	public boolean findRolePopedomByID(String roleID,String mid,String pid) {
+		//组织查询条件
+		String condition = "";
+		List<Object> paramsList = new ArrayList<Object>();
+		//角色ID
+		if(StringUtils.isNotBlank(roleID)){
+			condition += " and o.roleID = ?";
+			paramsList.add(roleID);
+		}
+		//子权限名称
+		if(StringUtils.isNotBlank(mid)){
+			condition += " and o.mid = ?";
+			paramsList.add(mid);
+		}
+		//父权限名称
+		if(StringUtils.isNotBlank(pid)){
+			condition += " and o.pid = ?";
+			paramsList.add(pid);
+		}
+		Object [] params = paramsList.toArray();
+		//查询对应的角色权限信息
+		List<ElecRolePopedom> list = elecRolePopedomDao.findCollectionByConditionNoPage(condition, params, null);
+		boolean flag = false;
+		if(list!=null && list.size()>0){
+			flag = true;
+		}
+		return flag;
+	}
+
 }

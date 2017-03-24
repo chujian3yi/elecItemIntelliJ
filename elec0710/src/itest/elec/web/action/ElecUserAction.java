@@ -1,17 +1,16 @@
 package itest.elec.web.action;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Controller;
-
 import itest.elec.domain.ElecSystemDDL;
 import itest.elec.domain.ElecUser;
 import itest.elec.service.IElecSystemDDLService;
 import itest.elec.service.IElecUserService;
+import itest.elec.util.AnnotationLimit;
 import itest.elec.util.ValueStackUtils;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 @SuppressWarnings("serial")
 @Controller("elecUserAction")
@@ -41,6 +40,7 @@ public class ElecUserAction extends BaseAction<ElecUser> {
 	* @Parameters: 无
 	* @Return: 跳转到system/userIndex.jsp
 	*/
+	@AnnotationLimit(mid ="an" ,pid ="am" )
 	public String home(){
 		//1.从数据字典表中，查询所属单位的列表，返回List<ElecSystemDDL>
 		List<ElecSystemDDL> jctList = elecSystemDDLService.findSystemDDLByKeyword("所属单位");
@@ -48,6 +48,15 @@ public class ElecUserAction extends BaseAction<ElecUser> {
 		//2.指定查询条件，查询用户集合
 		List<ElecUser> userList = elecUserService.findUserListByCondition(elecUser);
 		request.setAttribute("userList", userList);
+		//故意抛出异常
+		/*try {
+			ElecUser user = null;
+			user.getBirthday();
+		}catch (Exception e){
+			e.printStackTrace();
+			throw new RuntimeException("出错了！！！");
+		}*/
+
 		return "home";
 	}
 	/**  
@@ -131,6 +140,11 @@ public class ElecUserAction extends BaseAction<ElecUser> {
 	public String save(){
 		//直接获取保存的PO对象，执行保存
 		elecUserService.saveUser(elecUser);
+		//获取roleflag的值
+		String roleflag = elecUser.getRoleflag();
+		if (roleflag!=null && roleflag.equals("1")){
+			return edit();
+		}
 		return "close";
 	}
 	/**  
@@ -147,6 +161,8 @@ public class ElecUserAction extends BaseAction<ElecUser> {
 		ElecUser user = elecUserService.findElecUserByID(elecUser);
 		//新对象重新设置viewflag，再推入栈顶
 		user.setViewflag(elecUser.getViewflag());
+		//新对象重新设置roleflag，再推入栈顶
+		user.setRoleflag(elecUser.getRoleflag());
 		ValueStackUtils.setValueStack(user);
 		//2.查询性别、职位、所属单位、是否在职的下拉菜单
 		this.initSystemDDL();

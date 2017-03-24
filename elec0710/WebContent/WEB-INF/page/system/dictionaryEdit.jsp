@@ -44,11 +44,12 @@
  <TR height=10><td colspan=3></td></TR>
   <tr>
      <td align="center" colspan=3>
-       <input type="button" name="saveitem" value="保存" style="font-size:12px; color:black; height=20;width=50" onClick="saveDict()">
+		 <s:set value="%{#session.globle_popedom}" var="popedom" scope="request"></s:set>
+		 <s:if test="#request.popedom.contains('ec')">
+			 <input type="button" name="saveitem" value="保存" style="font-size:12px; color:black; height=20;width=50" onClick="saveDict()">
+         </s:if>
 	 </td>
  </tr>
- 
        <input type="hidden" name="keywordname" >
        <input type="hidden" name="typeflag" >
-	 
   </table>

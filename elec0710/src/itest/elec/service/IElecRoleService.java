@@ -20,4 +20,6 @@ public interface IElecRoleService {
 
 
     List<ElecPopedom> findShowMenu(String popedom);
+
+	boolean findRolePopedomByID(String roleID, String mid, String pid);
 }

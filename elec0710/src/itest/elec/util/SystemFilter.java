@@ -1,25 +1,27 @@
 package itest.elec.util;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.zip.CheckedInputStream;
+import itest.elec.domain.ElecUser;
 
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SystemFilter implements Filter {
-	
+	List<String> list = new ArrayList <String>();
+
 	/**初始化，在服务开启时执行*/
 	public void init(FilterConfig config) throws ServletException {
-
+		list.add("/index.jsp");
+		list.add("/image.jsp");
+		list.add("/system/elecMenuAction_menuHome.do");
+		list.add("/error.jsp");
+		list.add("/system/elecMenuAction_logout.do");
 	}
 	/**每次访问URL时都要访问此方法*/
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
@@ -30,7 +32,18 @@ public class SystemFilter implements Filter {
 			//记住我的代码放置到这里fowardIndexPage（）
 			String path = request.getServletPath();
 			this.fowardIndexPage(request,path);
-			chain.doFilter(request, response);
+			//获取当前session中用户
+			//没有session也要放行的定义在list中的
+			if(list.contains(path)){
+				chain.doFilter(request, response);
+				return;
+			}
+		    ElecUser elecUser = (ElecUser)request.getSession().getAttribute("globle_user");
+		    if (elecUser!=null){
+				chain.doFilter(request, response);
+				return;
+			}
+			response.sendRedirect(request.getContextPath()+"/error.jsp");
 	}
 	
 	
